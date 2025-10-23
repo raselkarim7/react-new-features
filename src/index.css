@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  margin: 4px;
+  padding: 8px;
+  border: 1px solid gainsboro;
+}
+
+h3 {
+  color: rgb(195, 10, 173);
+  padding: 4px 0px;
+}
