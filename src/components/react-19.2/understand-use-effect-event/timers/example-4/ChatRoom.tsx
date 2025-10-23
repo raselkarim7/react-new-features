@@ -14,7 +14,7 @@ const ChatRoom = ({ roomId, theme }: PropsInterface) => {
   });
 
   useEffect(() => {
-    let timerId: number = 0;
+    let timerId: number;
     const connection = createConnection(serverUrl, roomId);
     connection.on("connected", () => {
       timerId = setTimeout(() => {
@@ -23,10 +23,10 @@ const ChatRoom = ({ roomId, theme }: PropsInterface) => {
     });
     connection.connect();
     return () => {
-      if (timerId) {
+      connection.disconnect();
+      if (timerId !== undefined) {
         clearTimeout(timerId);
       }
-      connection.disconnect();
     };
   }, [roomId]);
 
