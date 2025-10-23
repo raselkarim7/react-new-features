@@ -7,12 +7,12 @@ interface PropsInterface {
 }
 const RandomPage = ({ url, numberOfItems }: PropsInterface) => {
   const viewNumberOfItems = () => {
-    console.log("View Number Of Items: ", numberOfItems);
+    // console.log("View Number Of Items: ", numberOfItems);
   };
 
   useEffect(() => {
     function trackEvent() {
-      console.log("page_view", { url });
+      // console.log("page_view", { url });
       viewNumberOfItems();
     }
     trackEvent();

@@ -10,7 +10,21 @@ div {
   border: 1px solid gainsboro;
 }
 
-h3 {
+h3,
+h3 a {
   color: rgb(195, 10, 173);
   padding: 4px 0px;
+}
+
+h2 {
+  color: rgb(7, 168, 29);
+  padding: 4px 0px;
+}
+
+.parent-level-1 {
+  border: 2px solid rgb(151, 198, 157);
+}
+
+.parent-level-2 {
+  border: 2px solid rgb(163, 167, 163);
 }

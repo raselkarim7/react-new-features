@@ -9,33 +9,29 @@ interface PropsInterface {
   theme: string;
 }
 const ChatRoom = ({ roomId, theme }: PropsInterface) => {
-  // // Func 1: with useEffectEvent
-  // const onConnected = useEffectEvent(() => {
-  //   console.log("inside show notification event: ", theme);
-  //   showNotification("Connected!", theme);
-  // });
-
-  // // Func 2: without useEffectEvent ( BOTH_WORKING_SAME)
-  const onConnected = () => {
-    // console.log("inside show notification event: ", theme);
-    showNotification("Connected!", theme);
-  };
+  const onConnected = useEffectEvent((roomIdParam: string) => {
+    showNotification("Welcome to " + roomIdParam, theme);
+  });
 
   useEffect(() => {
+    let timerId: number = 0;
     const connection = createConnection(serverUrl, roomId);
     connection.on("connected", () => {
-      onConnected();
+      timerId = setTimeout(() => {
+        onConnected(roomId);
+      }, 2000);
     });
     connection.connect();
-    return () => connection.disconnect();
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      connection.disconnect();
+    };
   }, [roomId]);
 
   return (
     <>
-      <b>** FUNNIEST_PART_WORKING_SAME_WITH_OR_WITHOUT_useEffectEvent ** </b>
-      <p>
-        <b>Just come into this file and SEE.</b>
-      </p>
       <p style={{ fontSize: "20px" }}>
         Welcome to the{" "}
         <b style={{ color: "orangered", fontSize: "24px" }}>{roomId}</b> room!

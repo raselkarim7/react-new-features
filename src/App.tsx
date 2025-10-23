@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import {
+  TimerOne,
+  TimerTwoFreezingCounter,
+  TimerThreeNonAdjustableDelay,
+  ChatRoomFixDelayedNotification,
   UnderstandActivity,
   UnderstandEffectEvent,
   UnderstandEffectEventByChatRoomProblem,
@@ -12,15 +16,23 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="parent-level-2">
         <h1>React 19.2 Features</h1>
-        {/* <UnderstandEffectEvent /> */}
-        <UnderstandEffectEventByChatRoomProblem />
-        <UnderstandEffectEventByChatRoomSolution />
+        <div className="parent-level-1">
+          <h2>Learning useEffectEvent</h2>
+          {/* <UnderstandEffectEvent /> */}
+          <UnderstandEffectEventByChatRoomProblem />
+          <UnderstandEffectEventByChatRoomSolution />
+          <TimerOne />
+          <TimerTwoFreezingCounter />
+          <TimerThreeNonAdjustableDelay />
+          <ChatRoomFixDelayedNotification />
+        </div>
+
         <UnderstandActivity />
       </div>
 
-      <div>
+      <div className="parent-level-2">
         <h1>React 19 Features</h1>
         <UnderstandEffectEvent />
       </div>
